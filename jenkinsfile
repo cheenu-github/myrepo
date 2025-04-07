@@ -1,0 +1,42 @@
+pipeline {
+    agent any 
+    
+    environment {
+        CITY = 'noida'
+    }
+    stages {
+        stage('build') {
+            steps {
+                echo 'build is done'
+            }
+        }
+        stage('test') {
+            steps {
+                sh '''
+                whoami
+                ls 
+                cd 
+                pwd
+                cal 2025
+                '''
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo "deployment is done"
+            }
+        }
+        stage('continue?') {
+            steps {
+               input message: "should we continue ?", ok: "yes we should"
+            }
+        }
+    }
+    post {
+        success {
+            echo "successful done"
+        } 
+    }
+}
+        
+            
